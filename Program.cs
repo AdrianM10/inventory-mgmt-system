@@ -10,13 +10,14 @@ namespace InventoryMgmtSystem
         {
             while (true)
             {
-                Console.WriteLine("Inventory Management System");
+                Console.WriteLine("------------------------------------");
+                Console.WriteLine("Inventory Management System, please select an option from the below: \n");
                 Console.WriteLine("1. Add Product");
                 Console.WriteLine("2. View Product");
                 Console.WriteLine("3. View All Products");
                 Console.WriteLine("4. Update Product");
                 Console.WriteLine("5. Remove Product");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("6. Exit \n");
 
                 string choice = Console.ReadLine();
 
@@ -90,21 +91,7 @@ namespace InventoryMgmtSystem
 
         static void ViewProduct(Inventory inventoryList)
         {
-            Console.WriteLine("Please provide a product you would like to view: ");
-            string product_name = Console.ReadLine();
-
-            foreach (Product product in inventoryList.products)
-            {
-                if (product_name == product.Name)
-                {
-                    Console.WriteLine($"Name: {product.Name}; Quantity: {product.Quantity}; Price: {product.Price}");
-                }
-                else
-                {
-                    Console.WriteLine($"{product_name} not found!");
-                }
-            }
-
+            inventoryList.DisplayProduct();
         }
 
         static void ViewAllProducts(Inventory inventoryList)
