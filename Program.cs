@@ -15,7 +15,8 @@ namespace InventoryMgmtSystem
                 Console.WriteLine("2. View Product");
                 Console.WriteLine("3. View All Products");
                 Console.WriteLine("4. Update Product");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. Remove Product");
+                Console.WriteLine("6. Exit");
 
                 string choice = Console.ReadLine();
 
@@ -23,21 +24,23 @@ namespace InventoryMgmtSystem
                 {
                     case "1":
                         AddProduct(inventoryList);
-                        Console.WriteLine("Simulating adding product");
+
                         break;
                     case "2":
                         ViewProduct(inventoryList);
-                        Console.WriteLine("Simulating returning product");
+
                         break;
                     case "3":
                         ViewAllProducts(inventoryList);
-                        Console.WriteLine("Simulate returning all products in inventory management system");
+
                         break;
                     case "4":
-                        // UpdateProduct();
-                        Console.WriteLine("Simulating updating product");
+                        UpdateProduct(inventoryList);
                         break;
                     case "5":
+                        RemoveProduct(inventoryList);
+                        break;
+                    case "6":
                         Environment.Exit(0);
                         break;
                     default:
@@ -80,6 +83,11 @@ namespace InventoryMgmtSystem
             inventoryList.AddProduct(product);
         }
 
+        static void UpdateProduct(Inventory inventoryList)
+        {
+            Console.WriteLine("Enter product name to update... Simulating update");
+        }
+
         static void ViewProduct(Inventory inventoryList)
         {
             Console.WriteLine("Please provide a product you would like to view: ");
@@ -96,7 +104,7 @@ namespace InventoryMgmtSystem
                     Console.WriteLine($"{product_name} not found!");
                 }
             }
-            
+
         }
 
         static void ViewAllProducts(Inventory inventoryList)
@@ -109,8 +117,32 @@ namespace InventoryMgmtSystem
 
             }
             Console.WriteLine("------------------------------------");
-            
+
         }
+
+        static void RemoveProduct(Inventory inventoryList)
+        {
+            Console.WriteLine("Please enter a product name to remove");
+            String product_name = Console.ReadLine();
+            bool found = false;
+
+            for (int i = 0; i < inventoryList.products.Count; i++)
+            {
+                if (inventoryList.products[i].Name == product_name)
+                {
+                    inventoryList.RemoveProduct(inventoryList.products[i]);
+                    Console.WriteLine($"{product_name} has been removed");
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                Console.WriteLine($"{product_name} not found!");
+            }
+        }
+
     }
 }
 
