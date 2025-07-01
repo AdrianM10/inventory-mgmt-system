@@ -42,6 +42,10 @@ public class Inventory
     }
 
     // Add method to Update Product
+    public void ModifyProduct()
+    {
+        Console.WriteLine("Simulate updating a product");
+    }
 
     public void DisplayProduct()
     {

@@ -56,7 +56,7 @@ namespace InventoryMgmtSystem
 
         static void UpdateProduct(Inventory inventoryList)
         {
-            Console.WriteLine("Enter product name to update... Simulating update");
+            inventoryList.ModifyProduct();
         }
 
         static void ViewProduct(Inventory inventoryList)
