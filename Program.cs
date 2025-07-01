@@ -109,15 +109,7 @@ namespace InventoryMgmtSystem
 
         static void ViewAllProducts(Inventory inventoryList)
         {
-            Console.WriteLine("------------------------------------");
-            Console.WriteLine("Retrieving all products...");
-            foreach (Product product in inventoryList.products)
-            {
-                Console.WriteLine($"Name: {product.Name}; Quantity: {product.Quantity}; Price: {product.Price}");
-
-            }
-            Console.WriteLine("------------------------------------");
-
+            inventoryList.DisplayAllProducts();
         }
 
         static void RemoveProduct(Inventory inventoryList)
