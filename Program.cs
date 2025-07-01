@@ -83,11 +83,20 @@ namespace InventoryMgmtSystem
         static void ViewProduct(Inventory inventoryList)
         {
             Console.WriteLine("Please provide a product you would like to view: ");
-            string product = Console.ReadLine();
+            string product_name = Console.ReadLine();
 
-
-
-
+            foreach (Product product in inventoryList.products)
+            {
+                if (product_name == product.Name)
+                {
+                    Console.WriteLine($"Name: {product.Name}; Quantity: {product.Quantity}; Price: {product.Price}");
+                }
+                else
+                {
+                    Console.WriteLine($"{product_name} not found!");
+                }
+            }
+            
         }
 
         static void ViewAllProducts(Inventory inventoryList)
