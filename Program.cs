@@ -25,15 +25,12 @@ namespace InventoryMgmtSystem
                 {
                     case "1":
                         AddProduct(inventoryList);
-
                         break;
                     case "2":
                         ViewProduct(inventoryList);
-
                         break;
                     case "3":
                         ViewAllProducts(inventoryList);
-
                         break;
                     case "4":
                         UpdateProduct(inventoryList);
@@ -50,38 +47,11 @@ namespace InventoryMgmtSystem
                 }
             }
 
-
-
         }
 
         static void AddProduct(Inventory inventoryList)
         {
-
-            string name = "";
-            double price = 0;
-            int quantity = 0;
-
-
-            Console.WriteLine("Please enter a product name: ");
-            name = Console.ReadLine();
-
-            Console.WriteLine($"Please enter a product price for {name}: ");
-            price = double.Parse(Console.ReadLine());
-
-            Console.WriteLine($"Please enter a quantity: ");
-            quantity = int.Parse(Console.ReadLine());
-
-            Console.WriteLine($"Product Name is {name}");
-            Console.WriteLine($"The price for {name} is: $ {price}");
-            Console.WriteLine($"The current quantity for {name}'s is : {quantity}");
-
-            Product product = new Product
-            {
-                Name = name,
-                Price = price,
-                Quantity = quantity
-            };
-            inventoryList.AddProduct(product);
+            inventoryList.InsertProduct();
         }
 
         static void UpdateProduct(Inventory inventoryList)
@@ -101,25 +71,7 @@ namespace InventoryMgmtSystem
 
         static void RemoveProduct(Inventory inventoryList)
         {
-            Console.WriteLine("Please enter a product name to remove");
-            String product_name = Console.ReadLine();
-            bool found = false;
-
-            for (int i = 0; i < inventoryList.products.Count; i++)
-            {
-                if (inventoryList.products[i].Name == product_name)
-                {
-                    inventoryList.RemoveProduct(inventoryList.products[i]);
-                    Console.WriteLine($"{product_name} has been removed");
-                    found = true;
-                    break;
-                }
-            }
-
-            if (!found)
-            {
-                Console.WriteLine($"{product_name} not found!");
-            }
+            inventoryList.DeleteProduct();
         }
 
     }
