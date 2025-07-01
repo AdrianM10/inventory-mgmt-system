@@ -1,4 +1,5 @@
-﻿using InventoryMgmtSystem;
+﻿using System.Runtime.CompilerServices;
+using InventoryMgmtSystem;
 
 namespace InventoryMgmtSystem
 {
@@ -25,7 +26,7 @@ namespace InventoryMgmtSystem
                         Console.WriteLine("Simulating adding product");
                         break;
                     case "2":
-                        // ViewProduct();
+                        ViewProduct(inventoryList);
                         Console.WriteLine("Simulating returning product");
                         break;
                     case "3":
@@ -79,8 +80,26 @@ namespace InventoryMgmtSystem
             inventoryList.AddProduct(product);
         }
 
-        static void ViewAllProducts(Inventory inventoryList )
+        static void ViewProduct(Inventory inventoryList)
         {
+            Console.WriteLine("Please provide a product you would like to view: ");
+            string product = Console.ReadLine();
+
+
+
+
+        }
+
+        static void ViewAllProducts(Inventory inventoryList)
+        {
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("Retrieving all products...");
+            foreach (Product product in inventoryList.products)
+            {
+                Console.WriteLine($"Name: {product.Name}; Quantity: {product.Quantity}; Price: {product.Price}");
+
+            }
+            Console.WriteLine("------------------------------------");
             
         }
     }
