@@ -44,13 +44,50 @@ public class Inventory
     // Add method to Update Product
     public void ModifyProduct()
     {
-        Console.WriteLine("Simulate updating a product");
+        Console.WriteLine("Please enter a product name you would like to update: ");
+        string product_name = Console.ReadLine();
+        bool found = false;
+
+        for (int i = 0; i < products.Count; i++)
+        {
+            if (products[i].Name == product_name)
+            {
+                found = true;
+                Console.WriteLine($"Please select a property to update for {product_name}:");
+                Console.WriteLine("1. Update Quantity");
+                Console.WriteLine("2. Update Price");
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+
+                        Console.WriteLine("Please enter a new quantity:");
+                        int quantity = int.Parse(Console.ReadLine());
+                        products[i].Quantity = quantity;
+                        Console.WriteLine($"Updating quantity for {product_name}.");
+                        break;
+                    case "2":
+                        Console.WriteLine("Please enter a new price:");
+                        double price = double.Parse(Console.ReadLine());
+                        products[i].Price = price;
+                        Console.WriteLine($"Updating price for {product_name}");
+                        break;
+                }
+                break;
+            }
+
+        }
+        if (!found)
+        {
+            Console.WriteLine($"{product_name} not found!");
+        }
     }
 
     public void DisplayProduct()
     {
 
-        Console.WriteLine("Please provide a product you would like to view: ");
+        Console.WriteLine("Please enter a product name you would like to view: ");
         string product_name = Console.ReadLine();
         bool found = false;
 
@@ -83,7 +120,7 @@ public class Inventory
     public void DeleteProduct()
     {
         Console.WriteLine("Please enter a product name to remove");
-        String product_name = Console.ReadLine();
+        string product_name = Console.ReadLine();
         bool found = false;
 
         for (int i = 0; i < products.Count; i++)
