@@ -1,5 +1,4 @@
 using System;
-using System.Security.Cryptography.X509Certificates;
 
 namespace InventoryMgmtSystem;
 
@@ -41,7 +40,6 @@ public class Inventory
         products.Add(product);
     }
 
-    // Add method to Update Product
     public void ModifyProduct()
     {
         Console.WriteLine("Please enter a product name you would like to update: ");
