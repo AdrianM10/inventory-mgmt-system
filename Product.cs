@@ -21,7 +21,7 @@ public class Inventory
 
 
         Console.WriteLine("Please enter a product name: ");
-        name = Console.ReadLine();
+        name = Console.ReadLine() ?? "";
 
         Console.WriteLine($"Please enter a product price for {name}: ");
         price = double.Parse(Console.ReadLine());
@@ -43,7 +43,7 @@ public class Inventory
     public void ModifyProduct()
     {
         Console.WriteLine("Please enter a product name you would like to update: ");
-        string product_name = Console.ReadLine();
+        string product_name = Console.ReadLine() ?? "";
         bool found = false;
 
         for (int i = 0; i < products.Count; i++)
@@ -54,7 +54,7 @@ public class Inventory
                 Console.WriteLine($"Please select a property to update for {product_name}:");
                 Console.WriteLine("1. Update Quantity");
                 Console.WriteLine("2. Update Price");
-                string choice = Console.ReadLine();
+                string choice = Console.ReadLine() ?? "";
 
                 switch (choice)
                 {
@@ -86,7 +86,7 @@ public class Inventory
     {
 
         Console.WriteLine("Please enter a product name you would like to view: ");
-        string product_name = Console.ReadLine();
+        string product_name = Console.ReadLine() ?? "";
         bool found = false;
 
         foreach (Product product in products)
@@ -126,7 +126,7 @@ public class Inventory
     public void DeleteProduct()
     {
         Console.WriteLine("Please enter a product name to remove");
-        string product_name = Console.ReadLine();
+        string product_name = Console.ReadLine() ?? "";
         bool found = false;
 
         for (int i = 0; i < products.Count; i++)
