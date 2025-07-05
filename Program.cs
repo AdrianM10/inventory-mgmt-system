@@ -19,7 +19,7 @@ namespace InventoryMgmtSystem
                 Console.WriteLine("5. Remove Product");
                 Console.WriteLine("6. Exit \n");
 
-                string choice = Console.ReadLine();
+                string choice = Console.ReadLine() ?? "";
 
                 switch (choice)
                 {
