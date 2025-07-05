@@ -1,0 +1,17 @@
+flowchart TD
+    Start([Start])
+    Menu{Show Menu & Get User Choice}
+    Add[Add Product]
+    ViewOne[View Product]
+    ViewAll[View All Products]
+    Remove["Remove Product"]
+    Exit([Exit])
+    Invalid[Invalid Option]
+
+    Start --> Menu
+    Menu -->|1| Add
+    Menu -->|2| ViewOne
+    Menu -->|3| ViewAll
+    Menu -->|4| Update
+    Menu -->|5| Remove
+    Menu -->|6| Exit
