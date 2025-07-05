@@ -22,7 +22,10 @@ flowchart TD
     SetUpdatePrice[User enters a new price]
     UpdatedPriceMsg[Updating price for product]
     UpdateQty[UpdateQuantity]
-    Remove["Remove Product"]
+    Remove[Remove Product]
+    GetRemovalProduct[Prompt: Enter a product to remove]
+    SetRemovalProduct[User enters a product name]
+    RemovalMsg[Removing product from inventory]
     Exit([Exit])
     Invalid[Invalid Option]
 
@@ -38,11 +41,7 @@ flowchart TD
     UpdateProperty --> GetUpdateQty --> SetUpdateQty --> UpdatedQtyMsg --> Menu
     UpdateProperty --> GetUpdatePrice --> SetUpdatePrice --> UpdatedPriceMsg --> Menu
     Menu -->|5| Remove
+    Remove --> GetProductName --> SetProductName --> GetRemovalProduct --> SetRemovalProduct --> RemovalMsg --> Menu
     Menu -->|6| Exit
     Menu -->|Other| Invalid
-  
-    ViewOne --> Menu
-    ViewAll --> Menu
-    Update --> Menu
-    Remove --> Menu
     Invalid --> Menu
