@@ -108,11 +108,19 @@ public class Inventory
     public void DisplayAllProducts()
     {
         Console.WriteLine("Retrieving all products... \n");
-        foreach (Product product in products)
+        if (products.Count == 0)
         {
-            Console.WriteLine($"Name: {product.Name}; Quantity: {product.Quantity}; Price: {product.Price}");
-
+            Console.WriteLine("No products in inventory");
         }
+        else
+        {
+            foreach (Product product in products)
+            {
+                Console.WriteLine($"Name: {product.Name}; Quantity: {product.Quantity}; Price: {product.Price}");
+
+            }
+        }
+
     }
 
     public void DeleteProduct()
