@@ -2,16 +2,33 @@ flowchart TD
     Start([Start])
     Menu{Show Menu & Get User Choice}
     Add[Add Product]
+    GetProductName[Prompt: Enter product name]
+    SetProductName[User enters product name]
+    GetProductPrice[Prompt: Enter product price]
+    SetProductPrice[User enters product price]
+    GetProductQty[Prompt: Enter product quantity]
+    SetProductQty[User enters product quantity]
     ViewOne[View Product]
+    DisplayProduct[Name: Coke; Quantity: 500; Price 10]
     ViewAll[View All Products]
+    Update[Update Product]
     Remove["Remove Product"]
     Exit([Exit])
     Invalid[Invalid Option]
 
     Start --> Menu
     Menu -->|1| Add
+    Add --> GetProductName --> SetProductName --> GetProductPrice --> SetProductPrice --> GetProductQty --> SetProductQty --> Menu
     Menu -->|2| ViewOne
+    ViewOne --> GetProductName --> SetProductName --> DisplayProduct
     Menu -->|3| ViewAll
     Menu -->|4| Update
     Menu -->|5| Remove
     Menu -->|6| Exit
+    Menu -->|Other| Invalid
+  
+    ViewOne --> Menu
+    ViewAll --> Menu
+    Update --> Menu
+    Remove --> Menu
+    Invalid --> Menu
