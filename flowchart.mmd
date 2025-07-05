@@ -9,20 +9,34 @@ flowchart TD
     GetProductQty[Prompt: Enter product quantity]
     SetProductQty[User enters product quantity]
     ViewOne[View Product]
-    DisplayProduct[Name: Coke; Quantity: 500; Price 10]
+    DisplayProduct[Displays product details]
+    DisplayProducts[Displays all products in inventory]
+    InvalidProduct
     ViewAll[View All Products]
     Update[Update Product]
+    UpdateProperty[Prompt: Select property to update for product]
+    GetUpdateQty[Prompt: Enter new quantity]
+    SetUpdateQty[User enters new quantity]
+    UpdatedQtyMsg[Updating quantity for product]
+    GetUpdatePrice[Prompt: Enter a new price]
+    SetUpdatePrice[User enters a new price]
+    UpdatedPriceMsg[Updating price for product]
+    UpdateQty[UpdateQuantity]
     Remove["Remove Product"]
     Exit([Exit])
     Invalid[Invalid Option]
 
     Start --> Menu
     Menu -->|1| Add
-    Add --> GetProductName --> SetProductName --> GetProductPrice --> SetProductPrice --> GetProductQty --> SetProductQty --> Menu
+    Add --> GetProductName --> SetProductName --> GetProductPrice --> SetProductPrice --> GetProductQty --> SetProductQty --> DisplayProduct --> Menu
     Menu -->|2| ViewOne
-    ViewOne --> GetProductName --> SetProductName --> DisplayProduct
+    ViewOne --> GetProductName --> SetProductName --> DisplayProduct --> Menu
     Menu -->|3| ViewAll
+    ViewAll --> DisplayProducts --> Menu
     Menu -->|4| Update
+    Update --> GetProductName --> SetProductName --> UpdateProperty
+    UpdateProperty --> GetUpdateQty --> SetUpdateQty --> UpdatedQtyMsg --> Menu
+    UpdateProperty --> GetUpdatePrice --> SetUpdatePrice --> UpdatedPriceMsg --> Menu
     Menu -->|5| Remove
     Menu -->|6| Exit
     Menu -->|Other| Invalid
