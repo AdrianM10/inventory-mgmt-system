@@ -8,12 +8,20 @@ flowchart TD
     SetProductPrice[User enters product price]
     GetProductQty[Prompt: Enter product quantity]
     SetProductQty[User enters product quantity]
+    DisplayAddProduct[Displays product details] 
+    
     ViewOne[View Product]
-    DisplayProduct[Displays product details]
-    DisplayProducts[Displays all products in inventory]
+    DisplayViewProduct[Displays product details]    
+    GetProductViewOneName[Prompt: Enter product name]
+    SetProductViewOneName[User enters product name]
     InvalidProduct
+    
     ViewAll[View All Products]
+    DisplayProducts[Displays all products in inventory]
+    
     Update[Update Product]
+    GetProductUpdateName[Prompt: Enter product name]
+    SetProductUpdateName[User enters product name]
     UpdateProperty[Prompt: Select property to update for product]
     GetUpdateQty[Prompt: Enter new quantity]
     SetUpdateQty[User enters new quantity]
@@ -21,27 +29,31 @@ flowchart TD
     GetUpdatePrice[Prompt: Enter a new price]
     SetUpdatePrice[User enters a new price]
     UpdatedPriceMsg[Updating price for product]
-    UpdateQty[UpdateQuantity]
+    
     Remove[Remove Product]
+    GetProductRemovalName[Prompt: Enter product name]
+    SetProductRemovalName[User enters product name]
     GetRemovalProduct[Prompt: Enter a product to remove]
     SetRemovalProduct[User enters a product name]
     RemovalMsg[Removing product from inventory]
+    
     Exit([Exit])
     Invalid[Invalid Option]
 
     Start --> Menu
     Menu -->|1| Add
-    Add --> GetProductName --> SetProductName --> GetProductPrice --> SetProductPrice --> GetProductQty --> SetProductQty --> DisplayProduct --> Menu
+    Add --> GetProductName --> SetProductName --> GetProductPrice --> SetProductPrice --> GetProductQty --> SetProductQty --> DisplayAddProduct --> Menu
     Menu -->|2| ViewOne
-    ViewOne --> GetProductName --> SetProductName --> DisplayProduct --> Menu
+    ViewOne --> GetProductViewOneName --> SetProductViewOneName --> DisplayViewProduct --> Menu
+    ViewOne --> InvalidProduct --> Menu
     Menu -->|3| ViewAll
     ViewAll --> DisplayProducts --> Menu
     Menu -->|4| Update
-    Update --> GetProductName --> SetProductName --> UpdateProperty
+    Update --> GetProductUpdateName --> SetProductUpdateName --> UpdateProperty
     UpdateProperty --> GetUpdateQty --> SetUpdateQty --> UpdatedQtyMsg --> Menu
     UpdateProperty --> GetUpdatePrice --> SetUpdatePrice --> UpdatedPriceMsg --> Menu
     Menu -->|5| Remove
-    Remove --> GetProductName --> SetProductName --> GetRemovalProduct --> SetRemovalProduct --> RemovalMsg --> Menu
+    Remove --> GetProductRemovalName --> SetProductRemovalName --> GetRemovalProduct --> SetRemovalProduct --> RemovalMsg --> Menu
     Menu -->|6| Exit
     Menu -->|Other| Invalid
     Invalid --> Menu
