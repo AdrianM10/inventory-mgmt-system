@@ -59,8 +59,8 @@ flowchart TD
     UpdateProperty -- Price --> GetUpdatePrice --> SetUpdatePrice --> PostUpdatedProperty
     PostUpdatedProperty --> Menu
     Menu -->|5| Remove
-    Remove --> GetProductRemovalName --> SetProductRemovalName --> GetRemovalProduct --> SetRemovalProduct --> RemovalMsg --> Menu
-    SetProductRemovalName --> InvalidProductRemoval --> Menu
+    Remove --> GetProductRemovalName --> SetProductRemovalName --> InvalidProductRemoval -- Yes --> GetRemovalProduct --> SetRemovalProduct --> RemovalMsg --> Menu
+    InvalidProductRemoval -- No --> Menu
     Menu -->|6| Exit
     Menu -->|Other| Invalid
     Invalid --> Menu
