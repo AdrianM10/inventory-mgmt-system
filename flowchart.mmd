@@ -23,7 +23,7 @@ flowchart TD
     Update[Update Product]
     GetProductUpdateName[Prompt: Enter product name]
     SetProductUpdateName[User enters product name]
-    UpdateProperty[Prompt: Select property to update for product]
+    UpdateProperty{Select property to update for product}
     GetUpdateQty[Prompt: Enter new quantity]
     SetUpdateQty[User enters new quantity]
     UpdatedQtyMsg[Updating quantity for product]
@@ -31,6 +31,7 @@ flowchart TD
     SetUpdatePrice[User enters a new price]
     UpdatedPriceMsg[Updating price for product]
     InvalidProductUpdate{Is product valid}
+    PostUpdatedProperty[Updating property]
 
     
     Remove[Remove Product]
@@ -54,10 +55,11 @@ flowchart TD
     ViewAll --> InventoryEmpty -- Yes --> Menu
     InventoryEmpty -- No --> DisplayProducts --> Menu
     Menu -->|4| Update
-    Update --> GetProductUpdateName --> SetProductUpdateName --> UpdateProperty
-    SetProductUpdateName --> InvalidProductUpdate --> Menu
-    UpdateProperty --> GetUpdateQty --> SetUpdateQty --> UpdatedQtyMsg --> Menu
-    UpdateProperty --> GetUpdatePrice --> SetUpdatePrice --> UpdatedPriceMsg --> Menu
+    Update --> GetProductUpdateName --> SetProductUpdateName --> InvalidProductUpdate -- Yes --> UpdateProperty
+    InvalidProductUpdate -- No --> Menu
+    UpdateProperty -- Quantity --> GetUpdateQty --> SetUpdateQty --> PostUpdatedProperty
+    UpdateProperty -- Price --> GetUpdatePrice --> SetUpdatePrice --> PostUpdatedProperty
+    PostUpdatedProperty --> Menu
     Menu -->|5| Remove
     Remove --> GetProductRemovalName --> SetProductRemovalName --> GetRemovalProduct --> SetRemovalProduct --> RemovalMsg --> Menu
     SetProductRemovalName --> InvalidProductRemoval --> Menu
