@@ -14,9 +14,10 @@ flowchart TD
     DisplayViewProduct[Displays product details]    
     GetProductViewOneName[Prompt: Enter product name]
     SetProductViewOneName[User enters product name]
-    InvalidProduct
+    InvalidProduct{Is product valid}
     
     ViewAll[View All Products]
+    InventoryEmpty{Is Inventory Empty}
     DisplayProducts[Displays all products in inventory]
     
     Update[Update Product]
@@ -29,6 +30,8 @@ flowchart TD
     GetUpdatePrice[Prompt: Enter a new price]
     SetUpdatePrice[User enters a new price]
     UpdatedPriceMsg[Updating price for product]
+    InvalidProductUpdate{Is product valid}
+
     
     Remove[Remove Product]
     GetProductRemovalName[Prompt: Enter product name]
@@ -36,6 +39,7 @@ flowchart TD
     GetRemovalProduct[Prompt: Enter a product to remove]
     SetRemovalProduct[User enters a product name]
     RemovalMsg[Removing product from inventory]
+    InvalidProductRemoval{Is product valid}
     
     Exit([Exit])
     Invalid[Invalid Option]
@@ -44,16 +48,19 @@ flowchart TD
     Menu -->|1| Add
     Add --> GetProductName --> SetProductName --> GetProductPrice --> SetProductPrice --> GetProductQty --> SetProductQty --> DisplayAddProduct --> Menu
     Menu -->|2| ViewOne
-    ViewOne --> GetProductViewOneName --> SetProductViewOneName --> DisplayViewProduct --> Menu
-    ViewOne --> InvalidProduct --> Menu
+    ViewOne --> GetProductViewOneName --> SetProductViewOneName --> InvalidProduct -- Yes --> DisplayViewProduct --> Menu
+    InvalidProduct -- No --> Menu
     Menu -->|3| ViewAll
-    ViewAll --> DisplayProducts --> Menu
+    ViewAll --> InventoryEmpty -- Yes --> Menu
+    InventoryEmpty -- No --> DisplayProducts --> Menu
     Menu -->|4| Update
     Update --> GetProductUpdateName --> SetProductUpdateName --> UpdateProperty
+    SetProductUpdateName --> InvalidProductUpdate --> Menu
     UpdateProperty --> GetUpdateQty --> SetUpdateQty --> UpdatedQtyMsg --> Menu
     UpdateProperty --> GetUpdatePrice --> SetUpdatePrice --> UpdatedPriceMsg --> Menu
     Menu -->|5| Remove
     Remove --> GetProductRemovalName --> SetProductRemovalName --> GetRemovalProduct --> SetRemovalProduct --> RemovalMsg --> Menu
+    SetProductRemovalName --> InvalidProductRemoval --> Menu
     Menu -->|6| Exit
     Menu -->|Other| Invalid
     Invalid --> Menu
